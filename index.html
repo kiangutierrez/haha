@@ -1,11 +1,38 @@
-<!DOCTYPE htm>
-<header> 
-    <title>
-<p>This is my first website.</P>
-    </title>
-</header>
-
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guessing Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+  </style>
+</head>
 <body>
-    <p style=color:rgb(216,167,93);>Hi! I am going to test this index hehe.</p>
-<a href="https://www.facebook.com/profile.php?id=100070751974615"> <button>my account</button></a>
+  <h1>Guessing Game</h1>
+  <p>Guess a number between 1 and 100:</p>
+  <input type="number" id="guessInput" min="1" max="100">
+  <button onclick="checkGuess()">Submit</button>
+  <p id="result"></p>
+
+  <script>
+    var randomNumber = Math.floor(Math.random() * 100) + 1;
+    var guessCount = 0;
+
+    function checkGuess() {
+      var guess = parseInt(document.getElementById("guessInput").value);
+      guessCount++;
+
+      if (guess === randomNumber) {
+        document.getElementById("result").innerHTML = "Congratulations! You guessed the correct number in " + guessCount + " tries.";
+        document.getElementById("guessInput").disabled = true;
+      } else if (guess < randomNumber) {
+        document.getElementById("result").innerHTML = "Too low! Try again.";
+      } else {
+        document.getElementById("result").innerHTML = "Too high! Try again.";
+      }
+    }
+  </script>
 </body>
+</html>
